@@ -12,7 +12,6 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.on('set username', (username) => {
-    console.log({ username })
     if (username) {
       users.push({ id: socket.id, username });
       socket.emit('username set', username);
@@ -22,7 +21,6 @@ io.on('connection', (socket) => {
 
   socket.on('chat message', (data) => {
     const user = users.find(user => user.id === socket.id);
-    console.log({ data })
 
     if (user) {
       messages.push({ username: user.username, message: data.message });
