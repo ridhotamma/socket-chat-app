@@ -80,12 +80,10 @@
     const input = document.getElementById("input");
     let username = ""
 
-    // Prompt for setting the username
-    while(!username) {
-      const input = prompt("enter your username")
+    while (!username) {
+      const input = window.prompt('enter your username: ')
       username = input
-      console.log({ username })
-      socket.emit("set username", username.trim())
+      socket.emit("set username", username)
     }
 
     form.addEventListener("submit", function (e) {
